@@ -1,0 +1,25 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="wang.zhuzhe.h5plus.android">
+    <supports-screens
+            android:anyDensity="true"
+            android:largeScreens="true"
+            android:normalScreens="true"
+            android:resizeable="true"
+            android:smallScreens="true"/>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+
+    <application>
+        <activity
+                android:name=".H5PlusEntry"
+                android:configChanges="orientation|keyboardHidden|screenSize|mcc|mnc|fontScale"
+                android:hardwareAccelerated="true"
+                android:screenOrientation="user"
+                android:theme="@style/TranslucentTheme"
+                android:windowSoftInputMode="adjustResize">
+        </activity>
+    </application>
+</manifest>
