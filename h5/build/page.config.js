@@ -1,3 +1,5 @@
+const fs = require('fs-extra')
+const path = require('path')
 const autoPages = (pages) => {
   var ps = {}
   for (let i = 0; i < pages.length; i++) {
@@ -5,6 +7,7 @@ const autoPages = (pages) => {
     if (page === undefined) continue
     var pageName = page
     var entry = ''
+    var template = 'public/index.html'
     if (page === '' || page === 'index') {
       pageName = 'index'
       entry = 'src/main.js'
@@ -18,8 +21,14 @@ const autoPages = (pages) => {
         entry = `src/${page}/main.js`
       }
     }
+    template = `public/${pageName}.html`
+    const templateFile = path.resolve(__dirname, `./../${template}`)
+    if (~fs.existsSync(templateFile)) {
+      template = 'public/index.html'
+    }
     ps[pageName] = {
-      entry
+      entry,
+      template
     }
   }
   return ps
