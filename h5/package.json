@@ -1,11 +1,14 @@
 {
+  "appid": "VueH5Plus",
   "name": "h5",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "build:android": "cross-env PLATFORM_ENV=android vue-cli-service build",
+    "build:ios": "cross-env PLATFORM_ENV=ios vue-cli-service build"
   },
   "dependencies": {
     "vue": "^2.6.6"
@@ -16,6 +19,7 @@
     "@vue/cli-service": "^3.1.1",
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.1",
+    "cross-env": "^5.2.0",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
     "node-sass": "^4.9.0",
