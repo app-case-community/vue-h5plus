@@ -64,18 +64,19 @@ export default {
     plus.key.addEventListener(
       'backbutton',
       function () {
-        plus.os.name === 'iOS'
-          ? plus.nativeUI.confirm(
-            '确认退出？',
-            function (e) {
-              if (e.index > 0) {
-                plus.runtime.quit()
-              }
-            },
-            'Vue-H5+',
-            ['取消', '确定']
-          )
-          : confirm('确认退出？') && plus.runtime.quit()
+        // plus.os.name === 'iOS'
+        //   ?
+        //   : confirm('确认退出？') && plus.runtime.quit()
+        plus.nativeUI.confirm(
+          '确认退出？',
+          function (e) {
+            if (e.index > 0) {
+              plus.runtime.quit()
+            }
+          },
+          'Vue-H5+',
+          ['取消', '确定']
+        )
       },
       false
     )
