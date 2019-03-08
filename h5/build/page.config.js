@@ -16,14 +16,15 @@ const autoPages = (pages) => {
       if (list[1] === undefined || list[1] === '') {
         pageName = `${list[0]}_index`
         entry = `src/${list[0]}/main.js`
+        template = `public/${list[0]}.index.html`
       } else {
         pageName = `${list[0]}_${list[1]}`
         entry = `src/${page}/main.js`
+        template = `public/${list[0]}.html`
       }
     }
-    template = `public/${pageName}.html`
     const templateFile = path.resolve(__dirname, `./../${template}`)
-    if (~fs.existsSync(templateFile)) {
+    if (!fs.existsSync(templateFile)) {
       template = 'public/index.html'
     }
     ps[pageName] = {
