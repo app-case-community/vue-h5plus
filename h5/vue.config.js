@@ -24,7 +24,7 @@ module.exports = {
       .set('~', resolve('src'))
   },
   configureWebpack: {
-    plugins: [
+    plugins: [].concat(isDev ? [] : [
       new PackerAppPlugin({
         appid: 'VueH5Plus',
         type: 'h5plus',
@@ -34,6 +34,6 @@ module.exports = {
           ios: resolve('./../ios/app/Pandora')
         }
       })
-    ]
+    ])
   }
 }

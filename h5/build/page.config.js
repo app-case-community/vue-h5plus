@@ -5,24 +5,21 @@ const autoPages = (pages) => {
     if (page === undefined) continue
     var pageName = page
     var entry = ''
-    var filename = ''
     if (page === '' || page === 'index') {
       pageName = 'index'
       entry = 'src/main.js'
-      filename = 'index.html'
     } else {
       var list = page.split('/')
       if (list[1] === undefined || list[1] === '') {
+        pageName = `${list[0]}_index`
         entry = `src/${list[0]}/main.js`
-        filename = `${list[0]}_index.html`
       } else {
+        pageName = `${list[0]}_${list[1]}`
         entry = `src/${page}/main.js`
-        filename = `${list[0]}_${list[1]}.html`
       }
     }
     ps[pageName] = {
-      entry,
-      filename
+      entry
     }
   }
   return ps
