@@ -13,6 +13,8 @@ const pages = {
   ...autoPages(['hellomui']) // hellomui 模块页面
 }
 
+const PackerAppPlugin = require('./build/plugins/packapp.plugin')
+
 module.exports = {
   publicPath: isDev ? '/' : './',
   productionSourceMap: isDev,
@@ -20,5 +22,10 @@ module.exports = {
   chainWebpack: (config) => {
     config.resolve.alias
       .set('~', resolve('src'))
+  },
+  configureWebpack: {
+    plugins: [
+      new PackerAppPlugin()
+    ]
   }
 }
