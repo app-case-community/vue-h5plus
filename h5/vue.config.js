@@ -25,7 +25,15 @@ module.exports = {
   },
   configureWebpack: {
     plugins: [
-      new PackerAppPlugin()
+      new PackerAppPlugin({
+        appid: 'VueH5Plus',
+        type: 'h5plus',
+        originDir: resolve('./dist'),
+        distDirs: {
+          android: resolve('./../android/app/src/main/assets'),
+          ios: resolve('./../ios/app/Pandora')
+        }
+      })
     ]
   }
 }
