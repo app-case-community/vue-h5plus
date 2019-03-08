@@ -1,23 +1,10 @@
 {
     "id": "VueH5Plus",
-    "name": "VueH5Plus",
     "version": {
-        "name": "2.5.0",
-        "code": "20500"
-    },
-    "description": "HTML5 Plus能力演示",
-    "icons": {
-        "144": "icon.png"
+        "name": "0.0.1",
+        "code": "1"
     },
     "launch_path": "index.html",
-    "developer": {
-        "name": "yanyilin",
-        "email": "yanyilin@dcloud.io",
-        "url": "http://www.dcloud.io"
-    },
-    "orientation": [
-        "portrait"
-    ],
     "permissions": {
         "Contacts": {
             "description": "系统通讯录"
@@ -81,7 +68,6 @@
             }
         },
         "popGesture": "close",
-        "runmode": "liberate",
         "signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw=="
     }
 }
