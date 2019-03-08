@@ -69,10 +69,40 @@ class PackerAppPlugin {
   }
 
   packerAndroid (originDir, dist) {
+    switch (this.type) {
+      case APP_TYPE.apicloud:
+        this.packApicloud(originDir, dist)
+        break
+      case APP_TYPE.h5plus:
+        this.packH5plusAndroid(originDir, dist)
+        break
+      default:break
+    }
+  }
+
+  packerIOS (originDir, dist) {
+    switch (this.type) {
+      case APP_TYPE.apicloud:
+        this.packApicloud(originDir, dist)
+        break
+      case APP_TYPE.h5plus:
+        this.packH5plusIOS(originDir, dist)
+        break
+      default:break
+    }
+  }
+
+  packApicloud (originDir, dist) {
+    fs.removeSync(dist)
+    fs.copySync(originDir, dist)
+    fs.removeSync(`${dist}/web_adapter`)
+  }
+
+  packH5plusAndroid (originDir, dist) {
     fs.removeSync(`${dist}/apps/${this.appid}`)
     fs.copySync(originDir, `${dist}/apps/${this.appid}/www`)
-
-    const xml = `<hbuilder version="1.9.9.59000" debug="true">
+    const xml = `<?xml version="1.0" encoding="utf-8"?>
+<hbuilder version="1.9.9.59000" debug="true">
     <apps>
         <app appid="${this.appid}" appver="0.0.1"/>
     </apps>
@@ -80,7 +110,7 @@ class PackerAppPlugin {
     fs.writeFileSync(`${dist}/data/dcloud_control.xml`, xml)
   }
 
-  packerIOS (originDir, dist) {
+  packH5plusIOS (originDir, dist) {
     fs.removeSync(`${dist}/apps/${this.appid}`)
     fs.copySync(originDir, `${dist}/apps/${this.appid}/www`)
     const xml = `<?xml version="1.0" encoding="utf-8"?>
