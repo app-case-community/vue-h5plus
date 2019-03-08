@@ -67,6 +67,10 @@
 		5DDAF8CE22321512005623DA /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DDAF8CD22321512005623DA /* CoreVideo.framework */; };
 		5DDAF8D62232192D005623DA /* TZImagePickerController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5DDAF8D52232192D005623DA /* TZImagePickerController.bundle */; };
 		5DDAF8FF22321BA4005623DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DDAF8FE22321BA4005623DA /* LaunchScreen.storyboard */; };
+		5DDAF90122321D13005623DA /* liblibPGInvocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DDAF90022321D13005623DA /* liblibPGInvocation.a */; };
+		5DDAF90322321D83005623DA /* liblibFingerprint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DDAF90222321D83005623DA /* liblibFingerprint.a */; };
+		5DDAF90422321D97005623DA /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DDAF89F22320DAA005623DA /* LocalAuthentication.framework */; };
+		5DDAF90622321DE3005623DA /* liblibGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DDAF90522321DE3005623DA /* liblibGeolocation.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -153,6 +157,9 @@
 		5DDAF8CD22321512005623DA /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		5DDAF8D52232192D005623DA /* TZImagePickerController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TZImagePickerController.bundle; path = app/SDK/Resource/TZImagePickerController.bundle; sourceTree = SOURCE_ROOT; };
 		5DDAF8FE22321BA4005623DA /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5DDAF90022321D13005623DA /* liblibPGInvocation.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = liblibPGInvocation.a; sourceTree = "<group>"; };
+		5DDAF90222321D83005623DA /* liblibFingerprint.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = liblibFingerprint.a; sourceTree = "<group>"; };
+		5DDAF90522321DE3005623DA /* liblibGeolocation.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = liblibGeolocation.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +167,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DDAF79A22311FD7005623DA /* CoreLocation.framework in Frameworks */,
+				5DDAF90422321D97005623DA /* LocalAuthentication.framework in Frameworks */,
 				5DDAF8A222320E37005623DA /* CoreMedia.framework in Frameworks */,
 				5DDAF79622311FC2005623DA /* AssetsLibrary.framework in Frameworks */,
 				5DDAF8CE22321512005623DA /* CoreVideo.framework in Frameworks */,
@@ -170,19 +179,20 @@
 				5DDAF8C222321183005623DA /* libmp3lame.a in Frameworks */,
 				5DDAF8A422320E41005623DA /* Photos.framework in Frameworks */,
 				5DDAF8C622321183005623DA /* storage.framework in Frameworks */,
+				5DDAF90622321DE3005623DA /* liblibGeolocation.a in Frameworks */,
 				5DDAF88422320BA7005623DA /* UserNotifications.framework in Frameworks */,
 				5DDAF7A8223123A1005623DA /* libsqlite3.0.tbd in Frameworks */,
 				5DDAF7A622312398005623DA /* libiconv.2.tbd in Frameworks */,
 				5DDAF7A42231238D005623DA /* libz.tbd in Frameworks */,
 				5DDAF7A32231237C005623DA /* libicucore.tbd in Frameworks */,
 				5DDAF79D22312327005623DA /* libxml2.tbd in Frameworks */,
+				5DDAF90322321D83005623DA /* liblibFingerprint.a in Frameworks */,
 				5DDAF8B922321183005623DA /* liblibMedia.a in Frameworks */,
 				5DDAF8BB22321183005623DA /* liblibNavigator.a in Frameworks */,
 				5DDAF7A12231234B005623DA /* libbz2.1.0.tbd in Frameworks */,
 				5DDAF79F22312339005623DA /* libiconv.tbd in Frameworks */,
 				5DDAF79B2231231F005623DA /* libc++.tbd in Frameworks */,
 				5DDAF8C322321183005623DA /* liblibNativeUI.a in Frameworks */,
-				5DDAF79A22311FD7005623DA /* CoreLocation.framework in Frameworks */,
 				5DDAF8C122321183005623DA /* liblibStorage.a in Frameworks */,
 				5DDAF77622311AF5005623DA /* QuickLook.framework in Frameworks */,
 				5DDAF8C022321183005623DA /* liblibZip.a in Frameworks */,
@@ -202,6 +212,7 @@
 				5DDAF76222311927005623DA /* MobileCoreServices.framework in Frameworks */,
 				5DDAF8C422321183005623DA /* liblibCamera.a in Frameworks */,
 				5DDAF7602231191D005623DA /* CoreTelephony.framework in Frameworks */,
+				5DDAF90122321D13005623DA /* liblibPGInvocation.a in Frameworks */,
 				5DDAF75E22311906005623DA /* WebKit.framework in Frameworks */,
 				5DDAF8BF22321183005623DA /* libopencore-amrnb.a in Frameworks */,
 				5DDAF75C223118FE005623DA /* JavaScriptCore.framework in Frameworks */,
@@ -292,12 +303,15 @@
 				5DDAF8A822321182005623DA /* libcoreSupport.a */,
 				5DDAF8C722321293005623DA /* liblibBarcode.a */,
 				5DDAF8B422321183005623DA /* liblibCamera.a */,
+				5DDAF90222321D83005623DA /* liblibFingerprint.a */,
+				5DDAF90522321DE3005623DA /* liblibGeolocation.a */,
 				5DDAF8AA22321182005623DA /* liblibIO.a */,
 				5DDAF8A922321182005623DA /* liblibMedia.a */,
 				5DDAF8A722321182005623DA /* liblibNativeObj.a */,
 				5DDAF8B322321183005623DA /* liblibNativeUI.a */,
 				5DDAF8AB22321182005623DA /* liblibNavigator.a */,
 				5DDAF8AD22321182005623DA /* liblibPDRCore.a */,
+				5DDAF90022321D13005623DA /* liblibPGInvocation.a */,
 				5DDAF8AC22321182005623DA /* liblibShare.a */,
 				5DDAF8B122321183005623DA /* liblibStorage.a */,
 				5DDAF8AE22321182005623DA /* liblibUI.a */,
