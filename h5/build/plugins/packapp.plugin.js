@@ -24,6 +24,9 @@ class PackerAppPlugin {
     const options = this.options
     const originDir = options.originDir
     const distDirs = options.distDirs
+    compiler.hooks.beforeRun.tap(pluginName, (compiler) => {
+      self.beforeRun()
+    })
     compiler.hooks.done.tap(pluginName, (stats) => {
       setTimeout(() => {
         if (originDir === undefined) {
@@ -45,7 +48,7 @@ class PackerAppPlugin {
             }
             self.packerIOS(originDir, distDirs.ios)
             break
-          default:
+          case PLATFORMS.universal:
             if (distDirs.android === undefined) {
               throw new Error('distDirs.android must config')
             }
@@ -54,6 +57,8 @@ class PackerAppPlugin {
             }
             self.packerAndroid(originDir, distDirs.android)
             self.packerIOS(originDir, distDirs.ios)
+            break
+          default:
             break
         }
         console.log(`${self.appid} [${platform}] build done.`)
@@ -68,6 +73,14 @@ class PackerAppPlugin {
     return this.options.appid || 'VueApp'
   }
 
+  beforeRun () {
+    if (this.type === APP_TYPE.apicloud) {
+      fs.copyFileSync(`${this.options.rootDir}/appconfig.xml`, `${this.options.rootDir}/public/config.xml`)
+    } else if (this.type === APP_TYPE.h5plus) {
+      fs.copyFileSync(`${this.options.rootDir}/appmanifest.json`, `${this.options.rootDir}/public/manifest.json`)
+    }
+  }
+
   packerAndroid (originDir, dist) {
     switch (this.type) {
       case APP_TYPE.apicloud:
@@ -76,7 +89,8 @@ class PackerAppPlugin {
       case APP_TYPE.h5plus:
         this.packH5plusAndroid(originDir, dist)
         break
-      default:break
+      default:
+        break
     }
   }
 
@@ -88,7 +102,8 @@ class PackerAppPlugin {
       case APP_TYPE.h5plus:
         this.packH5plusIOS(originDir, dist)
         break
-      default:break
+      default:
+        break
     }
   }
 
@@ -99,8 +114,9 @@ class PackerAppPlugin {
   }
 
   packH5plusAndroid (originDir, dist) {
-    fs.removeSync(`${dist}/apps/${this.appid}`)
-    fs.copySync(originDir, `${dist}/apps/${this.appid}/www`)
+    const assetPath = `${dist}/apps/${this.appid}`
+    fs.removeSync(assetPath)
+    fs.copySync(originDir, `${assetPath}/www`)
     const xml = `<?xml version="1.0" encoding="utf-8"?>
 <hbuilder version="1.9.9.59000" debug="true">
     <apps>
@@ -111,8 +127,9 @@ class PackerAppPlugin {
   }
 
   packH5plusIOS (originDir, dist) {
-    fs.removeSync(`${dist}/apps/${this.appid}`)
-    fs.copySync(originDir, `${dist}/apps/${this.appid}/www`)
+    const assetPath = `${dist}/apps/${this.appid}`
+    fs.removeSync(assetPath)
+    fs.copySync(originDir, `${assetPath}/www`)
     const xml = `<?xml version="1.0" encoding="utf-8"?>
 <HBuilder debug="true" version="1.9.9.59000">
   <apps>
