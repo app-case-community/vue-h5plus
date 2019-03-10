@@ -28,6 +28,7 @@ module.exports = {
       new PackerAppPlugin({
         appid: 'VueH5Plus',
         type: 'h5plus',
+        rootDir: resolve('.'),
         originDir: resolve('./dist'),
         distDirs: {
           android: resolve('./../android/app/src/main/assets'),
