@@ -54,7 +54,7 @@ export default {
     }
   },
   components: {},
-  onLoad () {
+  onReady () {
     var plus = this.$plus
     // 隐藏滚动条
     plus.webview.currentWebview().setStyle({
@@ -84,7 +84,7 @@ export default {
   methods: {
     dispatchPage (id) {
       var page = this.pages[id]
-      this.startPage(page.url, page.title)
+      this.$page.open(page.url, page.title)
     }
   }
 }

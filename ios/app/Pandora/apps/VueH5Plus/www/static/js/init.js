@@ -1,16 +1,13 @@
 (function (window) {
-  var regExit = function () {
-
-  }
   // DOMContentLoaded事件处理
   var _domReady = false
+  // 兼容性样式调整
+  var _adjust = false
   document.addEventListener('DOMContentLoaded', function () {
     _domReady = true
     compatibleAdjust()
   }, false)
-  // 兼容性样式调整
-  var _adjust = false
-  function compatibleAdjust () {
+  var compatibleAdjust = function () {
     if (_adjust || !window.plus || !_domReady) {
       return
     }
@@ -28,7 +25,7 @@
     }, 200)
   }
   window.$init = function (fn) {
-    document.body.addEventListener('touchstart', function () {})
+    document.body.addEventListener('touchstart', function () { })
     document.oncontextmenu = function () {
       return false
     }
@@ -49,11 +46,13 @@
   window.$updateOrientation = function (fn) {
     var update = function () {
       setTimeout(function () {
-        fn()
+        document.dispatchEvent(new MessageEvent('updateOrientation', {
+          data: {}
+        }))
+        fn && fn()
       }, 200)
     }
     window.addEventListener('orientationchange', update, false)
     window.addEventListener('resize', update, false)
   }
-  window.$regExit = regExit
 })(window)
