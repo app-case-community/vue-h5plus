@@ -55,31 +55,22 @@ export default {
   },
   components: {},
   onReady () {
-    var plus = this.$plus
     // 隐藏滚动条
-    plus.webview.currentWebview().setStyle({
+    this.$currentWebview.setStyle({
       scrollIndicator: 'none'
     })
-    // Android处理返回键
-    plus.key.addEventListener(
-      'backbutton',
-      function () {
-        // plus.os.name === 'iOS'
-        //   ?
-        //   : confirm('确认退出？') && plus.runtime.quit()
-        plus.nativeUI.confirm(
-          '确认退出？',
-          function (e) {
-            if (e.index > 0) {
-              plus.runtime.quit()
-            }
-          },
-          'Vue-H5+',
-          ['取消', '确定']
-        )
+  },
+  keyEvents: {
+    backbutton () {
+      this.$nativeUI.confirm('确认退出？', e => {
+        if (e.index > 0) {
+          this.$plus.runtime.quit()
+        }
       },
-      false
-    )
+      'Vue-H5+',
+      ['取消', '确定']
+      )
+    }
   },
   methods: {
     dispatchPage (id) {
